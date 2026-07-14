@@ -92,5 +92,5 @@ Bearish Cross :
         )
 
 
-if __name__ == "_ _main_ _":
+if __name__ == "__main__":
     asyncio.run(main())
