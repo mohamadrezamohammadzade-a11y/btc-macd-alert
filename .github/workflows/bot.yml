@@ -3,7 +3,7 @@ name: BTC MACD Alert
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/1 * * * *"
+    - cron: "*/2 * * * *"
 
 jobs:
   run:
