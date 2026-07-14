@@ -7,7 +7,7 @@ URL = "https://api.binance.com/api/v3/klines"
 
 def get_dataframe():
 
-    data = requests.get(
+    response = requests.get(
         URL,
         params={
             "symbol": SYMBOL,
@@ -15,14 +15,27 @@ def get_dataframe():
             "limit": LIMIT
         },
         timeout=20
-    ).json()
+    )
+
+    response.raise_for_status()
+
+    data = response.json()
 
     df = pd.DataFrame(data)
 
     df.columns = [
-        "open_time", "open", "high", "low", "close",
-        "volume", "close_time",
-        "q", "n", "tbb", "tbq", "ignore"
+        "open_time",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "close_time",
+        "q",
+        "n",
+        "tbb",
+        "tbq",
+        "ignore"
     ]
 
     df["close"] = df["close"].astype(float)
