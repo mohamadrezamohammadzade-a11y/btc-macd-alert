@@ -1,0 +1,8 @@
+SYMBOL = "BTCUSDT"
+INTERVAL = "5m"
+
+FAST_EMA = 12
+SLOW_EMA = 26
+SIGNAL = 9
+
+TIMEZONE = "Asia/Tehran"
