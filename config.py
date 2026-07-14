@@ -1,8 +1,12 @@
+import os
+
 SYMBOL = "BTCUSDT"
 INTERVAL = "5m"
+LIMIT = 100
 
 FAST_EMA = 12
 SLOW_EMA = 26
-SIGNAL = 9
+SIGNAL_EMA = 9
 
-TIMEZONE = "Asia/Tehran"
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
