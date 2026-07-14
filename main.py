@@ -1,4 +1,3 @@
-1/0
 import asyncio
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -9,7 +8,7 @@ from telegram_service import send_message
 
 
 async def main():
-    raise Exceptoin("TEST 123")
+
     df, macd, signal, ema200 = calculate()
 
     # فقط کندل‌های بسته شده
@@ -94,5 +93,5 @@ Bearish Cross :
         )
 
 
-if name == "__main__":
+if__name__ == "__main__":
     asyncio.run(main())
