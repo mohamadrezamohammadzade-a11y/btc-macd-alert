@@ -17,8 +17,34 @@ async def main():
     curr_signal = signal.iloc[-1]
 
    price = float(df["close"].iloc[-1])
-trend_up = price > ema200.iloc[-1]
-trend_down = price < ema200.iloc[-1]
+   trend_up = price > ema200.iloc[-1]
+   trend_down = price < ema200.iloc[-1]
+from config import DEBUG
+
+if DEBUG:
+    text = f"""
+📊 BTCUSDT STATUS
+
+💰 Price: {price:.2f}
+
+MACD : {curr_macd:.4f}
+Signal : {curr_signal:.4f}
+
+EMA200 : {ema200.iloc[-1]:.2f}
+
+Trend :
+{"🟢 Bullish" if trend_up else "🔴 Bearish"}
+
+MACD Position :
+{"🟢 Above Signal" if curr_macd > curr_signal else "🔴 Below Signal"}
+
+Previous Candle
+MACD : {prev_macd:.4f}
+Signal : {prev_signal:.4f}
+"""
+
+    await send_message(text)
+    return
 
     tehran_time = datetime.now(
         ZoneInfo("Asia/Tehran")
