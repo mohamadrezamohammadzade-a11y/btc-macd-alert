@@ -8,7 +8,7 @@ from config import SYMBOL
 
 
 async def main():
-    df, macd, signal = calculate()
+    df, macd, signal, ema200 = calculate()
 
     prev_macd = macd.iloc[-2]
     curr_macd = macd.iloc[-1]
@@ -16,13 +16,19 @@ async def main():
     prev_signal = signal.iloc[-2]
     curr_signal = signal.iloc[-1]
 
-    price = float(df["close"].iloc[-1])
+   price = float(df["close"].iloc[-1])
+trend_up = price > ema200.iloc[-1]
+trend_down = price < ema200.iloc[-1]
 
     tehran_time = datetime.now(
         ZoneInfo("Asia/Tehran")
     ).strftime("%Y-%m-%d %H:%M:%S")
 
-    if prev_macd < prev_signal and curr_macd > curr_signal:
+ if (
+    prev_macd < prev_signal
+    and curr_macd > curr_signal
+    and trend_up
+):
 
         text = f"""🟢 BUY SIGNAL
 
@@ -37,7 +43,11 @@ async def main():
 
         await send_message(text)
 
-    elif prev_macd > prev_signal and curr_macd < curr_signal:
+  elif (
+    prev_macd > prev_signal
+    and curr_macd < curr_signal
+    and trend_down
+):
 
         text = f"""🔴 SELL SIGNAL
 
