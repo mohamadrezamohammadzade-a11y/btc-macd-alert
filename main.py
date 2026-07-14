@@ -8,7 +8,7 @@ from telegram_service import send_message
 
 
 async def main():
-
+    raise Exceptoin("TEST 123")
     df, macd, signal, ema200 = calculate()
 
     # فقط کندل‌های بسته شده
