@@ -1,5 +1,7 @@
 SYMBOL = "BTCUSDT"
+
 INTERVAL = "5m"
+
 LIMIT = 300
 
 FAST_EMA = 12
@@ -8,4 +10,4 @@ SIGNAL_EMA = 9
 
 EMA_FILTER = 200
 
-DEBUG = True
+DEBUG = False
