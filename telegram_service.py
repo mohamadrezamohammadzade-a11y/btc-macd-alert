@@ -1,10 +1,11 @@
+import os
 from telegram import Bot
-from config import BOT_TOKEN, CHAT_ID
 
-bot = Bot(BOT_TOKEN)
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
+bot = Bot(TOKEN)
+
 
 async def send_message(text):
-    await bot.send_message(
-        chat_id=CHAT_ID,
-        text=text
-    )
+    await bot.send_message(chat_id=CHAT_ID, text=text)
