@@ -30,14 +30,16 @@ def get_dataframe():
     return df
 
 
-def calculate():
+def calculate():def calculate():
 
     df = get_dataframe()
 
-    ema12 = df.close.ewm(span=FAST_EMA).mean()
-    ema26 = df.close.ewm(span=SLOW_EMA).mean()
+    ema12 = df.close.ewm(span=FAST_EMA, adjust=False).mean()
+    ema26 = df.close.ewm(span=SLOW_EMA, adjust=False).mean()
 
     macd = ema12 - ema26
-    signal = macd.ewm(span=SIGNAL_EMA).mean()
+    signal = macd.ewm(span=SIGNAL_EMA, adjust=False).mean()
 
-    return df, macd, signal
+    ema200 = df.close.ewm(span=EMA_FILTER, adjust=False).mean()
+
+    return df, macd, signal, ema200
