@@ -11,7 +11,7 @@ from config import (
     EMA_FILTER,
 )
 
-URL = "https://data-api.binance.vision/api/v3/klines"
+URL = "https://api1.binance.com/api/v3/klines"
 
 
 def get_dataframe():
